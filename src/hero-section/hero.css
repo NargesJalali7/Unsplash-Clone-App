@@ -1,2 +1,51 @@
+.hero-background {
+  width: 100%;
+  height: 56.25vw; 
+  max-height: 600px; 
+  position: relative;
+  overflow: hidden;
+}
 
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
 
+.hero-image.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; 
+  color: rgb(54, 16, 77);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
