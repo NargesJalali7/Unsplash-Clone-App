@@ -8,7 +8,7 @@ export default function HeroSection() {
   useEffect(() => {
     const accessKey = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
 
-    fetch(`https://api.unsplash.com/photos?per_page=30&client_id=${accessKey}`)
+    fetch(`https://api.unsplash.com/photos?per_page=10&client_id=${accessKey}`)
       .then((response) => response.json())
       .then((pictureData) => {
         setHeroBackground(pictureData);
@@ -19,11 +19,12 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
+    // We use useEffect hook for side effects like fetching data or setting timers! You can't use setInterval without-outside of useEffect.
     if (heroBackground.length === 0) return;
 
     const intervalId = setInterval(() => {
       setCurrentHeroBackground(
-        (prevIndex) => (prevIndex + 1) % heroBackground.length
+        (prevIndex) => (prevIndex + 1) % heroBackground.length // Updater Function - using % to loop back - ex: 7-7=0, so it goes back to the first index!
       );
     }, 3000);
 
