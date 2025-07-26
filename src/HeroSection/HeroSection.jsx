@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./hero.css";
+import "./HeroSection.css";
 
 export default function HeroSection() {
   const [heroBackground, setHeroBackground] = useState([]);
