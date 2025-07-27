@@ -11,6 +11,7 @@ function App() {
   const ACCESS_KEY = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
   const picturesPerPage = 7;
   const debounceRef = useRef();
+  const timeoutRef = useRef(null);
 
   const fetchPhotos = (query, page = 1) => {
     fetch(
@@ -28,15 +29,20 @@ function App() {
   };
 
   const debounce = (func, delay) => {
-    let timeoutId;
     return (...args) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func(...args), delay);
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => func(...args), delay);
     };
   };
 
   useEffect(() => {
     debounceRef.current = debounce(fetchPhotos, 500);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   const callDebouncedFetch = (query) => {
