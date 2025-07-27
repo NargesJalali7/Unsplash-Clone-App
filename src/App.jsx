@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar/SearchBar.jsx";
 import PhotoGallery from "./PhotoGallery/PhotoGallery.jsx";
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -14,15 +15,23 @@ function App() {
   const timeoutRef = useRef(null);
 
   const fetchPhotos = (query, page = 1) => {
-    fetch(
-      `https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=${picturesPerPage}&client_id=${ACCESS_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setPhotos(data.results);
+    axios
+      .get(
+        `https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=${picturesPerPage}&client_id=${ACCESS_KEY}`
+      )
+      .then((res) => {
+        setPhotos(res.data.results);
+        setCurrentPage(page);
       })
       .catch((error) => {
-        console.error("Error fetching photos:", error);
+        if (error.response) {
+          console.error("Error status:", error.response.status);
+          console.error("Error data:", error.response.data);
+        } else if (error.request) {
+          console.error("No response:", error.request);
+        } else {
+          console.error("Error:", error.message);
+        }
         setPhotos([]);
         setCurrentPage(page);
       });

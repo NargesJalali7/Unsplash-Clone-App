@@ -16,7 +16,6 @@ export default function SearchBar({
           onChange={(event) => {
             const value = event.target.value;
             setSearchtext(value);
-
             if (value.trim() !== "") {
               callDebouncedFetch(value.trim(), 1);
             } else {
