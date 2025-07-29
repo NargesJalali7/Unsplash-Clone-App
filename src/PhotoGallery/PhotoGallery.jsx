@@ -1,16 +1,21 @@
 import "./PhotoGallery.css";
+import Pagination from "@mui/material/Pagination";
 
 export default function PhotoGallery({
   photos,
   fetchPhotos,
   searchtext,
   currentPage,
+  totalPhotos,
+  picturesPerPage,
 }) {
-  const handlePageChange = (pageNumber) => {
+  if (!Array.isArray(photos)) return null;
+
+  const handlePageChange = (event, pageNumber) => {
     fetchPhotos(searchtext.trim(), pageNumber);
   };
 
-  const totalPages = 7;
+  const totalPages = Math.ceil(totalPhotos / picturesPerPage);
   return (
     <div className="gallery-container">
       <div className="photo-gallery">
@@ -28,16 +33,13 @@ export default function PhotoGallery({
       </div>
 
       <div className="pagination">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => handlePageChange(i + 1)}
-            className={currentPage === i + 1 ? "active" : ""}
-            disabled={photos.length === 0 || searchtext.trim() === ""}
-          >
-            {i + 1}
-          </button>
-        ))}
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          color="secondary"
+          disabled={searchtext.trim() === ""}
+        />
       </div>
     </div>
   );
