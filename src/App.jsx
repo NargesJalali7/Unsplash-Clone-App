@@ -14,7 +14,7 @@ function App() {
   const debounceRef = useRef();
   const timeoutRef = useRef(null);
 
-  const fetchPhotos = (query, page = 1) => {
+  const fetchPhotos = (query = "nature", page = 1) => {
     fetch(
       `https://api.unsplash.com/search/photos?query=${encodeURIComponent(
         query
@@ -53,6 +53,7 @@ function App() {
 
   useEffect(() => {
     debounceRef.current = debounce(fetchPhotos, 500);
+    callDebouncedFetch();
 
     return () => {
       if (timeoutRef.current) {
@@ -61,7 +62,7 @@ function App() {
     };
   }, []);
 
-  const callDebouncedFetch = (query, page = 1) => {
+  const callDebouncedFetch = (query = "nature", page = 1) => {
     if (debounceRef.current) {
       debounceRef.current(query, page);
     }
