@@ -31,7 +31,8 @@ export default function HeroSection() {
           alignItems: "center",
           justifyContent: "center",
           alignContent: "center",
-          height: 400,
+          height: { xs: "300px", sm: "400px", md: "600px" },
+          width: "100%",
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -44,6 +45,7 @@ export default function HeroSection() {
             position: "absolute",
             top: 30,
             right: 30,
+
             backgroundColor: "rgba(0,0,0,0.4)",
             "&:hover": {
               backgroundColor: "rgba(0,0,0,0.6)",
@@ -51,12 +53,27 @@ export default function HeroSection() {
             zIndex: 10,
           }}
         >
-          <BsFillBookmarkHeartFill size={40} color="purple" />
+          <BsFillBookmarkHeartFill
+            color="purple"
+            style={{ fontSize: "clamp(18px, 4vw, 35px)" }}
+          />
         </IconButton>
-        <Typography variant="h1" color="purple">
+        <Typography
+          variant="h1"
+          color="purple"
+          sx={{
+            fontSize: { xs: 35, sm: 50, md: 70 },
+          }}
+        >
           Unsplash
         </Typography>
-        <Typography variant="body1" color="purple">
+        <Typography
+          variant="body1"
+          color="purple"
+          sx={{
+            fontSize: { xs: 12, sm: 22, md: 32 },
+          }}
+        >
           The most powerful photo engine in the world.
         </Typography>
       </Box>

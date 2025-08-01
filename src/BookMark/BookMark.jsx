@@ -16,7 +16,7 @@ export default function BookMarkList() {
             position: "fixed",
             top: 0,
             right: 0,
-            width: 350,
+            width: { xs: "100%", md: 350 },
             height: "100vh",
             display: "flex",
             flexDirection: "column",

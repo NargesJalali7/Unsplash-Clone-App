@@ -101,6 +101,7 @@ export default function PhotoGallery({
             display: "flex",
             justifyContent: "center",
             marginTop: 4,
+            paddingX: { xs: 1, sm: 2, md: 0 },
           }}
         >
           <Pagination
@@ -111,6 +112,13 @@ export default function PhotoGallery({
             variant="outlined"
             shape="rounded"
             disabled={searchtext.trim() === ""}
+            sx={{
+              "& .MuiPagination-ul": {
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: 1,
+              },
+            }}
           />
         </Box>
       </Box>

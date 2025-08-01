@@ -25,6 +25,14 @@ export default function SearchBar({
           label="Search Something..."
           variant="outlined"
           sx={{
+            width: { xs: "100%", sm: 300 },
+            input: {
+              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+              padding: "16.5px 14px",
+            },
+            label: {
+              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
+            },
             "& label": {
               color: "#6e1a8fff",
             },
@@ -58,13 +66,20 @@ export default function SearchBar({
         sx={{
           display: "flex",
           justifyContent: "center",
-          gap: 2,
+          flexWrap: "wrap",
+          gap: { xs: 1, sm: 2, md: 3 },
         }}
       >
         {["books", "coffee", "mobiles", "computers", "technology"].map(
           (keyword) => (
             <Button
+              size="small"
               sx={{
+                p: { xs: 0.5, sm: 1, md: 1.5 },
+                fontSize: { xs: 7, sm: 14, md: 17 },
+                minWidth: { xs: 60, sm: 80, md: 100 },
+                whiteSpace: "normal",
+                wordBreak: "break-word",
                 color: "#510d57ff",
                 borderColor: "#431047ff",
                 borderRadius: "24px",
