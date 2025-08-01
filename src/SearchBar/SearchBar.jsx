@@ -5,7 +5,6 @@ export default function SearchBar({
   callDebouncedFetch,
   setSearchtext,
   searchtext,
-  setPhotos,
 }) {
   return (
     <>

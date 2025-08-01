@@ -1,14 +1,19 @@
 import HeroSection from "./HeroSection/HeroSection.jsx";
+import BookMarkList from "./BookMark/BookMark.jsx";
 import SearchBar from "./SearchBar/SearchBar.jsx";
 import PhotoGallery from "./PhotoGallery/PhotoGallery.jsx";
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
+import { BookmarkContext } from "./BookmarkContext";
 
 function App() {
   const [photos, setPhotos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchtext, setSearchtext] = useState("");
   const [totalPhotos, setTotalPhotos] = useState();
+  const [likedPhotos, setLikedPhotos] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const accessKey = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
   const picturesPerPage = 7;
   const debounceRef = useRef();
@@ -68,12 +73,36 @@ function App() {
     }
   };
 
+  const toggleLike = (photo) => {
+    let newLikedPhotos;
+
+    if (likedPhotos.some((obj) => obj.id === photo.id)) {
+      newLikedPhotos = likedPhotos.filter((obj) => obj.id !== photo.id);
+    } else {
+      newLikedPhotos = [...likedPhotos, photo];
+    }
+    setLikedPhotos(newLikedPhotos);
+    localStorage.setItem("likedPhotos", JSON.stringify(newLikedPhotos));
+  };
+
+  useEffect(() => {
+    const savedPhotos = localStorage.getItem("likedPhotos");
+    if (savedPhotos) {
+      setLikedPhotos(JSON.parse(savedPhotos));
+    }
+  }, []);
+
   return (
     <>
-      <HeroSection />
+      <BookmarkContext.Provider
+        value={{ likedPhotos, toggleLike, isSidebarOpen, setIsSidebarOpen }}
+      >
+        <HeroSection />
+        <BookMarkList />
+      </BookmarkContext.Provider>
+
       <SearchBar
         searchtext={searchtext}
-        setPhotos={setPhotos}
         setSearchtext={setSearchtext}
         callDebouncedFetch={callDebouncedFetch}
       />
@@ -84,6 +113,8 @@ function App() {
         currentPage={currentPage}
         searchtext={searchtext}
         totalPhotos={totalPhotos}
+        toggleLike={toggleLike}
+        likedPhotos={likedPhotos}
       />
     </>
   );

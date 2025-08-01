@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
+import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import "./HeroSection.css";
+import { useContext } from "react";
+import { BookmarkContext } from "../BookmarkContext.jsx";
 
 export default function HeroSection() {
   const [heroBackground, setHeroBackground] = useState("");
+  const { setIsSidebarOpen } = useContext(BookmarkContext);
 
   useEffect(() => {
     const accessKey = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
@@ -34,6 +38,21 @@ export default function HeroSection() {
           backgroundRepeat: "no-repeat",
         }}
       >
+        <IconButton
+          onClick={() => setIsSidebarOpen(true)}
+          sx={{
+            position: "absolute",
+            top: 30,
+            right: 30,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            "&:hover": {
+              backgroundColor: "rgba(0,0,0,0.6)",
+            },
+            zIndex: 10,
+          }}
+        >
+          <BsFillBookmarkHeartFill size={40} color="purple" />
+        </IconButton>
         <Typography variant="h1" color="purple">
           Unsplash
         </Typography>
