@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar/SearchBar.jsx";
 import PhotoGallery from "./PhotoGallery/PhotoGallery.jsx";
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
-import { BookmarkContext } from "./BookmarkContext";
+import { BookmarkContext } from "./BookmarkContext.jsx";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -17,7 +17,6 @@ function App() {
   const accessKey = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
   const picturesPerPage = 7;
   const debounceRef = useRef();
-  const timeoutRef = useRef(null);
 
   const fetchPhotos = (query = "nature", page = 1) => {
     fetch(
@@ -50,20 +49,27 @@ function App() {
   };
 
   const debounce = (func, delay) => {
-    return (...args) => {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => func(...args), delay);
+    let timeoutId;
+
+    const debounced = (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
     };
+
+    debounced.cancel = () => {
+      clearTimeout(timeoutId);
+    };
+
+    return debounced;
   };
 
   useEffect(() => {
     debounceRef.current = debounce(fetchPhotos, 500);
     callDebouncedFetch();
-
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      debounceRef.current?.cancel?.();
     };
   }, []);
 
