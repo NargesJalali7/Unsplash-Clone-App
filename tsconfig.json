@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES6",                           // What JS version to output
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],  // Include browser + modern JS features
-    "allowJs": true,                            // Allow regular .js files
-    "skipLibCheck": true,                       // Skip checking .d.ts files for speed
-    "esModuleInterop": true,                    // Allow default imports from CommonJS
-    "allowSyntheticDefaultImports": true,       // Allow things like: import React from 'react'
-    "strict": true,                             // Enable all strict type-checking
-    "forceConsistentCasingInFileNames": true,   // Prevent issues between Mac/Windows/Linux
-    "module": "ESNext",                         // For bundlers like Webpack, Vite
-    "moduleResolution": "Node",                 // How to resolve modules (like Node.js)
-    "resolveJsonModule": true,                  // Allow importing `.json` files
-    "isolatedModules": true,                    // Required for React + Babel/Vite setups
-    "jsx": "react-jsx",                         // Use new JSX transform (React 17+)
-    "noEmit": true                              // Don’t output compiled .js files (optional)
+    "target": "ES6",                           
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],  
+    "allowJs": true,                            
+    "skipLibCheck": true,                      
+    "esModuleInterop": true,                    
+    "allowSyntheticDefaultImports": true,       
+    "strict": true,                             
+    "forceConsistentCasingInFileNames": true,   
+    "module": "ESNext",                         
+    "moduleResolution": "Node",                 
+    "resolveJsonModule": true,                  
+    "isolatedModules": true,                    
+    "jsx": "react-jsx",                        
   },
-  "include": ["src"],       // Only check files inside /src
-  "exclude": ["node_modules"] // Ignore dependencies
+  "include": ["src"],       
+  "exclude": ["node_modules"] 
 }
