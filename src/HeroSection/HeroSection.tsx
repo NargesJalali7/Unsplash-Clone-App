@@ -3,10 +3,17 @@ import { Box, Typography, IconButton } from "@mui/material";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import "./HeroSection.css";
 import { useContext } from "react";
-import { BookmarkContext } from "../BookmarkContext.jsx";
+import { BookmarkContext } from "../BookmarkContext";
+import React from "react";
 
-export default function HeroSection() {
-  const [heroBackground, setHeroBackground] = useState("");
+type UnsplashPhoto = {
+  urls: {
+    regular: string;
+  };
+};
+
+const HeroSection: React.FC = () => {
+  const [heroBackground, setHeroBackground] = useState<string>("");
   const { setIsSidebarOpen } = useContext(BookmarkContext);
 
   useEffect(() => {
@@ -14,7 +21,7 @@ export default function HeroSection() {
 
     fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}`)
       .then((response) => response.json())
-      .then((pictureData) => {
+      .then((pictureData: UnsplashPhoto) => {
         setHeroBackground(pictureData.urls.regular);
       })
       .catch((error) => {
@@ -80,3 +87,4 @@ export default function HeroSection() {
     </>
   );
 }
+export default HeroSection;

@@ -1,24 +1,24 @@
-import HeroSection from "./HeroSection/HeroSection.jsx";
-import BookMarkList from "./BookMark/BookMark.jsx";
-import SearchBar from "./SearchBar/SearchBar.jsx";
-import PhotoGallery from "./PhotoGallery/PhotoGallery.jsx";
+import HeroSection from "./HeroSection/HeroSection";
+import BookMarkList from "./BookMark/BookMark";
+import SearchBar from "./SearchBar/SearchBar";
+import PhotoGallery from "./PhotoGallery/PhotoGallery";
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
-import { BookmarkContext } from "./BookmarkContext.jsx";
+import { BookmarkContext } from "./BookmarkContext";
+import { PhotoType } from "./App.types";
 
 function App() {
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState<PhotoType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchtext, setSearchtext] = useState("");
-  const [totalPhotos, setTotalPhotos] = useState();
-  const [likedPhotos, setLikedPhotos] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [totalPhotos, setTotalPhotos] = useState(0);
+  const [likedPhotos, setLikedPhotos] = useState<PhotoType[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const accessKey = "e-BkdQ9oYva6jfie_WTzp-U2AP_H7ltt1ZLKDybO6d0";
   const picturesPerPage = 7;
-  const debounceRef = useRef();
-
-  const fetchPhotos = (query = "nature", page = 1) => {
+  const debounceRef = useRef<((query: string, page?: number) => void) & { cancel?: () => void } | null>(null);
+  const fetchPhotos = (query: string = "nature", page: number = 1) => {
     fetch(
       `https://api.unsplash.com/search/photos?query=${encodeURIComponent(
         query
@@ -48,10 +48,11 @@ function App() {
       });
   };
 
-  const debounce = (func, delay) => {
-    let timeoutId;
 
-    const debounced = (...args) => {
+  const debounce = <T extends (...args: any[]) => void>(func: T, delay: number) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const debounced = (...args: Parameters<T>) => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         func(...args);
@@ -65,6 +66,7 @@ function App() {
     return debounced;
   };
 
+
   useEffect(() => {
     debounceRef.current = debounce(fetchPhotos, 500);
     callDebouncedFetch();
@@ -73,14 +75,14 @@ function App() {
     };
   }, []);
 
-  const callDebouncedFetch = (query = "nature", page = 1) => {
+  const callDebouncedFetch = (query: string = "nature", page: number = 1) => {
     if (debounceRef.current) {
       debounceRef.current(query, page);
     }
   };
 
-  const toggleLike = (photo) => {
-    let newLikedPhotos;
+  const toggleLike = (photo: PhotoType) => {
+    let newLikedPhotos: PhotoType[];
 
     if (likedPhotos.some((obj) => obj.id === photo.id)) {
       newLikedPhotos = likedPhotos.filter((obj) => obj.id !== photo.id);
@@ -91,12 +93,20 @@ function App() {
     localStorage.setItem("likedPhotos", JSON.stringify(newLikedPhotos));
   };
 
-  useEffect(() => {
+    useEffect(() => {
     const savedPhotos = localStorage.getItem("likedPhotos");
     if (savedPhotos) {
-      setLikedPhotos(JSON.parse(savedPhotos));
+      try {
+        const parsed = JSON.parse(savedPhotos);
+        if (Array.isArray(parsed)) {
+          setLikedPhotos(parsed);
+        }
+      } catch (e) {
+        console.error("Failed to parse saved liked photos.");
+      }
     }
   }, []);
+
 
   return (
     <>

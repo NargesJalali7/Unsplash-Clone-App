@@ -2,9 +2,10 @@ import { Box, IconButton } from "@mui/material";
 import { useContext } from "react";
 import { BsDoorClosed } from "react-icons/bs";
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import { BookmarkContext } from "../BookmarkContext.jsx";
+import { BookmarkContext } from "../BookmarkContext";
+import { PhotoType } from "../App.types";
 
-export default function BookMarkList() {
+export default function BookMarkList () {
   const { likedPhotos, isSidebarOpen, setIsSidebarOpen, toggleLike } =
     useContext(BookmarkContext);
 
@@ -51,7 +52,7 @@ export default function BookMarkList() {
                 gap: 2.5,
               }}
             >
-              {likedPhotos.map((photo) => (
+              {likedPhotos.map((photo: PhotoType) => (
                 <Box
                   key={photo.id}
                   sx={{
@@ -104,3 +105,5 @@ export default function BookMarkList() {
     </>
   );
 }
+
+

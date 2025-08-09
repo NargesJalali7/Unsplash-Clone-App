@@ -1,11 +1,12 @@
 import { Box, TextField, Button } from "@mui/material";
+import { SearchBarProps } from "./SearchBar.Types";
 import "./SearchBar.css";
 
-export default function SearchBar({
+export default function SearchBar ({
   callDebouncedFetch,
   setSearchtext,
   searchtext,
-}) {
+}: SearchBarProps ) {
   return (
     <>
       <Box
@@ -110,4 +111,5 @@ export default function SearchBar({
       </Box>
     </>
   );
-}
+};
+

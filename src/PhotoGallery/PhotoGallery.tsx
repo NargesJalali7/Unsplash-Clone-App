@@ -1,8 +1,9 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import { FaHeart } from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
+import { PhotoGalleryProps } from "./PhotoGallery.Types";
 
-export default function PhotoGallery({
+export default function PhotoGallery ({
   photos,
   fetchPhotos,
   searchtext,
@@ -11,10 +12,10 @@ export default function PhotoGallery({
   picturesPerPage,
   toggleLike,
   likedPhotos,
-}) {
-  if (!Array.isArray(photos)) return null;
+}: PhotoGalleryProps ) {
+    if (!Array.isArray(photos)) return null;
 
-  const handlePageChange = (event, pageNumber) => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, pageNumber: number) => {
     fetchPhotos(searchtext.trim(), pageNumber);
   };
 
