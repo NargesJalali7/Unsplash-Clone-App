@@ -1,6 +1,7 @@
 Unsplash Clone App
 
 🌟 Highlights
+
 My first react project. A responsive unsplash clone app that allows you to search photos and bookmark your favorite ones.
 
 🛠 Tech Stack
