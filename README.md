@@ -20,9 +20,12 @@ https://nj-unsplash-clone-app.netlify.app/
 
 📸 Screenshots
 
-
 <img width="1908" height="609" alt="Screenshot 2025-10-06 162207" src="https://github.com/user-attachments/assets/b8e5339a-ca98-44eb-9153-e2559cd9d402" />
 
+
+
 <img width="1915" height="908" alt="Screenshot 2025-10-06 162409" src="https://github.com/user-attachments/assets/6775071a-3cb1-4dfb-88d2-ddc9d5647370" />
+
+
 
 <img width="1905" height="822" alt="Screenshot 2025-10-06 162352" src="https://github.com/user-attachments/assets/956ac5aa-9e64-431e-bdee-30bac130fc91" />
