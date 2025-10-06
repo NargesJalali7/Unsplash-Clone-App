@@ -5,11 +5,13 @@ Unsplash Clone App
 My first react project. A responsive unsplash clone app that allows you to search photos and bookmark your favorite ones.
 
 
+
 # 🛠 Tech Stack
 - React
 - TypeScipt
 - Mui
 - Netlify (deployment)
+
   
 
 
@@ -21,8 +23,10 @@ My first react project. A responsive unsplash clone app that allows you to searc
   
 
 
+
 # 🔗 Live Demo
 https://nj-unsplash-clone-app.netlify.app/
+
 
 
 # 📸 Screenshots
