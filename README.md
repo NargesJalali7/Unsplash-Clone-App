@@ -1,12 +1,28 @@
-# React + Vite
+Unsplash Clone App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌟 Highlights
+My first react project. A responsive unsplash clone app that allows you to search photos and bookmark your favorite ones.
 
-Currently, two official plugins are available:
+🛠 Tech Stack
+- React
+- TypeScipt
+- Mui
+- Netlify (deployment)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌟 Features
+- The hero section's picture changes with each reload of the page.
+- User can search any keyword and get as many results as available in unsplash official database.
+- There are  suggusted keywords in the app ready for search.
+- User can bookmark any photo by liking them.
 
-## Expanding the ESLint configuration
+🔗 Live Demo
+https://nj-unsplash-clone-app.netlify.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📸 Screenshots
+
+
+<img width="1908" height="609" alt="Screenshot 2025-10-06 162207" src="https://github.com/user-attachments/assets/b8e5339a-ca98-44eb-9153-e2559cd9d402" />
+
+<img width="1915" height="908" alt="Screenshot 2025-10-06 162409" src="https://github.com/user-attachments/assets/6775071a-3cb1-4dfb-88d2-ddc9d5647370" />
+
+<img width="1905" height="822" alt="Screenshot 2025-10-06 162352" src="https://github.com/user-attachments/assets/956ac5aa-9e64-431e-bdee-30bac130fc91" />
