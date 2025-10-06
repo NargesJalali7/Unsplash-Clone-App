@@ -20,8 +20,6 @@ My first react project. A responsive unsplash clone app that allows you to searc
 🔗 Live Demo
 https://nj-unsplash-clone-app.netlify.app/
 
-
-
 📸 Screenshots
 
 The Hero Section
@@ -36,11 +34,10 @@ PhotoGallery
 <img width="1905" height="822" alt="Screenshot 2025-10-06 162352" src="https://github.com/user-attachments/assets/956ac5aa-9e64-431e-bdee-30bac130fc91" />
 
 
-
 In Mobile:
 
 <img width="381" height="668" alt="Screenshot 2025-10-06 162753" src="https://github.com/user-attachments/assets/353d3240-4a17-4790-8ce1-a920eb4c3058" />
 
+The Bookmark in Mobile:
 
-The BookMark In Mobile:
-<img width="382" height="669" alt="Screenshot 2025-10-06 162803" src="https://github.com/user-attachments/assets/46eb5553-213e-461b-bb2c-9ba9656a9717" />
+<img width="382" height="669" alt="Screenshot 2025-10-06 162803" src="https://github.com/user-attachments/assets/1c80725e-5b7d-4c80-9b7d-1583b2ffb0f0" />
