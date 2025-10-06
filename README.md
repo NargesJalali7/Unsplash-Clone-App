@@ -18,7 +18,7 @@ My first react project. A responsive unsplash clone app that allows you to searc
 # 🌟 Features
 - The hero section's picture changes with each reload of the page.
 - User can search any keyword and get as many results as available in unsplash official database.
-- There are  suggusted keywords in the app ready for search.
+- There are  suggested keywords in the app ready for search.
 - User can bookmark any photo by liking them.
   
 
